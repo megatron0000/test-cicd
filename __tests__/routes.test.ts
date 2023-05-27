@@ -11,6 +11,7 @@ beforeEach(() => {
 
 describe("GET /todo", () => {
   it("should return a list of tasks", async () => {
+    throw new Error("fail on purpose");
     tarefas.push({ id: 10, descricao: "teste" });
 
     const response = await request.get("/todo");
