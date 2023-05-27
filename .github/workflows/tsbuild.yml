@@ -1,0 +1,27 @@
+name: Typescript workflow build
+run-name: Run typescript workflow build
+on:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    types: [opened]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build typescript project
+        run: yarn run build
