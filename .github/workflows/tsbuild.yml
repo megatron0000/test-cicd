@@ -47,6 +47,7 @@ jobs:
   deploy-staging:
     runs-on: ubuntu-latest
     # needs: [build, test]
+    if: github.ref_name == "main"
     steps:
       - name: deploy
         uses: fjogeleit/http-request-action@v1
