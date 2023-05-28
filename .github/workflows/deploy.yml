@@ -1,0 +1,19 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Release version"
+        required: true
+
+jobs:
+  deploy:
+    name: Deploy
+    needs:
+      - tsbuild.yml@test
+      - tsbuild.yml@build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: npm run deploy
